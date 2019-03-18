@@ -5,6 +5,7 @@
  */
 package com.barric.nexars.NexarsFacialApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
@@ -47,7 +48,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Reports implements Serializable {
 
     private static final long serialVersionUID = 1L;
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Integer id;
@@ -68,10 +69,10 @@ public class Reports implements Serializable {
     @Column(name = "date_created")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
-   
+
     @Column(name = "report_type_id")
     private int reportTypeId;
-    
+
     @Column(name = "anonimity")
     private boolean anonimity;
     @JoinColumn(name = "citizen_id", referencedColumnName = "id")
@@ -130,6 +131,7 @@ public class Reports implements Serializable {
         this.caption = caption;
     }
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -206,5 +208,5 @@ public class Reports implements Serializable {
     public String toString() {
         return "com.security.nexarssecurity.entities.Reports[ id=" + id + " ]";
     }
-    
+
 }

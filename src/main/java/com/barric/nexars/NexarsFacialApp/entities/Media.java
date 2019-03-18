@@ -5,6 +5,7 @@
  */
 package com.barric.nexars.NexarsFacialApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -34,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Media.findAll", query = "SELECT m FROM Media m")
     , @NamedQuery(name = "Media.findById", query = "SELECT m FROM Media m WHERE m.id = :id")
     , @NamedQuery(name = "Media.findByUrl", query = "SELECT m FROM Media m WHERE m.url = :url")
+    , @NamedQuery(name = "Media.findByReportId", query = "SELECT m FROM Media m WHERE m.reportId.id = :id")
     , @NamedQuery(name = "Media.findByMediaType", query = "SELECT m FROM Media m WHERE m.mediaType = :mediaType")
     , @NamedQuery(name = "Media.findByIsCensored", query = "SELECT m FROM Media m WHERE m.isCensored = :isCensored")})
 public class Media implements Serializable {
@@ -103,6 +105,7 @@ public class Media implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<ReportComments> getReportCommentsList() {
         return reportCommentsList;
     }
@@ -111,6 +114,7 @@ public class Media implements Serializable {
         this.reportCommentsList = reportCommentsList;
     }
 
+    @JsonIgnore
     public Reports getReportId() {
         return reportId;
     }
@@ -120,6 +124,7 @@ public class Media implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Citizens> getCitizensList() {
         return citizensList;
     }
@@ -154,6 +159,7 @@ public class Media implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<FacialFeature> getFacialFeatureList() {
         return facialFeatureList;
     }
@@ -161,5 +167,5 @@ public class Media implements Serializable {
     public void setFacialFeatureList(List<FacialFeature> facialFeatureList) {
         this.facialFeatureList = facialFeatureList;
     }
-    
+
 }
