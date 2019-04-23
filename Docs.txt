@@ -1,0 +1,12 @@
+https://dry-castle-50280.herokuapp.com/ | https://git.heroku.com/dry-castle-50280.git
+
+C:\Users\Barima\Google Drive\Apps\WebApps\NexarsFacialAppHeroku>heroku apps:rename --app dry-castle-50280 facialrecog
+Renaming dry-castle-50280 to facialrecog... !
+ !    Name facialrecog is already taken
+
+C:\Users\Barima\Google Drive\Apps\WebApps\NexarsFacialAppHeroku>heroku apps:rename --app dry-castle-50280 nexarsfacialrecog
+Renaming dry-castle-50280 to nexarsfacialrecog... done
+https://nexarsfacialrecog.herokuapp.com/ | https://git.heroku.com/nexarsfacialrecog.git
+ !    Don't forget to update git remotes for all other local checkouts of the app.
+
+C:\Users\Barima\Google Drive\Apps\WebApps\NexarsFacialAppHeroku>

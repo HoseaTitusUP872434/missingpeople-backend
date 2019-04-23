@@ -81,9 +81,12 @@ public class ReportResources {
         String dir = new File("").getAbsolutePath() + "\\image\\";
         try {
             List<Reports> report = repo.findAllReports();
+    
             List<ReportObject> re = new ArrayList<>();
             for(Reports r : report){
+                
                 ReportObject ro = new ReportObject();
+                ro.setId(r.getId());
                 ro.setComment(r.getReportCommentsList().size());
                 ro.setContent(r.getMessage());
                 ro.setPostTitle(r.getCaption());
