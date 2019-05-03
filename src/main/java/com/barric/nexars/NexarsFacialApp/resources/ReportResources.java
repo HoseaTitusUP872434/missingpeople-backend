@@ -78,7 +78,7 @@ public class ReportResources {
 
     @GetMapping(value = "/allpost")
     public List<ReportObject> findAllPost() {
-        String dir = new File("").getAbsolutePath() + "\\image\\";
+      //  String dir = new File("").getAbsolutePath() + "\\image\\";
         try {
             List<Reports> report = repo.findAllReports();
     
@@ -94,16 +94,17 @@ public class ReportResources {
                 ro.setUsername(c.getFirstname() + " " + c.getLastname());
                 ro.setUserId(c.getId());
                 String img = "";
-                if (c.getMediaId() != null) {
-                    img = c.getMediaId().getUrl();
-                }
-                img = UtilHelper.base64Encoder(dir + img);
-                ro.setUserImage(img);
+//                if (c.getMediaId() != null) {
+//                    img = c.getMediaId().getUrl();
+//                }
+//                img = UtilHelper.base64Encoder(dir + img);
+                ro.setUserImage(c.getMediaId().getUrl());
                 if (mediaRepo.findByReportId(r.getId()) !=null) {
                     Media me = mediaRepo.findByReportId(r.getId());
-                    ro.setPostImage(UtilHelper.base64Encoder(dir + me.getUrl()));
+                   // ro.setPostImage(UtilHelper.base64Encoder(dir + me.getUrl()));
+                     ro.setPostImage(me.getUrl());
                 } else {
-                    ro.setPostImage(UtilHelper.base64Encoder(""));
+                    ro.setPostImage("");
                 }
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String date = sdf.format(r.getDateCreated());
@@ -121,17 +122,13 @@ public class ReportResources {
     
     
     public boolean saveMedia(String image, Reports postId){
-          String dir = new File("").getAbsolutePath() + "\\image\\";
+         // String dir = new File("").getAbsolutePath() + "\\image\\";
         try {
-            String imageName = Calendar.getInstance().getTimeInMillis() + "image.png";
-            String filePath = dir + imageName;
-
-            if (!new File(dir).exists()) {
-                new File(dir).mkdir();
-            }
-            System.out.println(filePath);
+          final  String imageName = postId.getId()+Calendar.getInstance().getTimeInMillis() + "image.png";
+          
+          
             //   UtilHelper.saveFile(file, filePath);
-            UtilHelper.saveBase(image, filePath);
+            UtilHelper.saveBase(image, imageName);
            
             Media m   = new Media();
                 m.setIsCensored(false);

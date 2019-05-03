@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.barric.nexars.NexarsFacialApp.resources;
-
 import com.barric.nexars.NexarsFacialApp.entities.Citizens;
 import com.barric.nexars.NexarsFacialApp.entities.Media;
 import com.barric.nexars.NexarsFacialApp.repositories.CitizensRepo;
@@ -99,22 +98,16 @@ public class CitizensResource {
     public ResponseMessage singleFileUpload(@RequestBody final FileUploads file) {
         //System.out.println("id: "+id);
         // System.out.println("File: "+file);
-        String dir = new File("").getAbsolutePath() + "\\image\\";
+       // String dir = UtilHelper.IMAGEPATH + "image\\";
         try {
-            String imageName = Calendar.getInstance().getTimeInMillis() + "image.png";
-            String filePath = dir + imageName;
+           final String imageName = Calendar.getInstance().getTimeInMillis() + "image.png";
 
-            if (!new File(dir).exists()) {
-                new File(dir).mkdir();
-            }
-            System.out.println(filePath);
-            //   UtilHelper.saveFile(file, filePath);
-            UtilHelper.saveBase(file.getFile(), filePath);
+            UtilHelper.saveBase(file.getFile(), imageName);
             Citizens citi = repo.findById(file.getId()).get();
             Media m = null;
             if (citi.getMediaId() != null) {
                 m = citi.getMediaId();
-                File f = new File(dir + m.getUrl());
+                File f = new File(UtilHelper.IMAGEPATH + m.getUrl());
                 if (f.exists()) {
                     f.delete();
                 }

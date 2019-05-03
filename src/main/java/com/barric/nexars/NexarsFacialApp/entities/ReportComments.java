@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ReportComments.findAll", query = "SELECT r FROM ReportComments r")
     , @NamedQuery(name = "ReportComments.findById", query = "SELECT r FROM ReportComments r WHERE r.id = :id")
     , @NamedQuery(name = "ReportComments.findByComment", query = "SELECT r FROM ReportComments r WHERE r.comment = :comment")
+    , @NamedQuery(name = "ReportComments.findAllByReport", query = "SELECT r FROM ReportComments r WHERE r.reportId.id = :reportId ORDER BY r.id DESC")
     , @NamedQuery(name = "ReportComments.findByDateCreated", query = "SELECT r FROM ReportComments r WHERE r.dateCreated = :dateCreated")})
 public class ReportComments implements Serializable {
 
@@ -138,5 +139,5 @@ public class ReportComments implements Serializable {
     public String toString() {
         return "com.security.nexarssecurity.entities.ReportComments[ id=" + id + " ]";
     }
-    
+
 }
