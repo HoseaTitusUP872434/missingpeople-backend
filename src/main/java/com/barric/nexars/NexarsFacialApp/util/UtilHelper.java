@@ -24,12 +24,16 @@ public class UtilHelper {
     public static final String MERCHANT = "merchant";
     public static final String USER = "user";
     public static final String FILEPATH = "";
-   // public static final String IMAGEPATH = "/opt/";
-     public static final String IMAGEPATH = "c:/opt/file/";
-    public static final String APPURL = "localhost:8084/";
-    public static final String IMAGEURL = "localhost:8084/files/";
+  
+//     public static final String IMAGEPATH = "C:/opt/files/";
+//      public static final String IMAGEURL = "localhost:8084/files/";
+//    public static final String APPURL = "localhost:8084/";
+    public static final String APPURL="http://40.86.95.117:8084";
+     public static final String IMAGEPATH = "/opt/files/";
+    public static final String IMAGEURL = "http://40.86.95.117:8084/files/";
     public static final String IMAGETYPE_PROFILE = "profile";
     public static final String IMAGETYPE_PRODUCT = "product";
+    public static final String subscriptionKey = "bf16848833c942488ae2d25814820601";
 
     public static boolean saveFile(InputStream is, String filename) {
         try {
@@ -63,13 +67,17 @@ public class UtilHelper {
 
     public static boolean saveBase(String b4, String p) {
           String path = IMAGEPATH+p;
+       //   System.err.println("path: "+path+" img:"+b4);
          if (!new File(path).getParentFile().exists()) {
-                new File(path).mkdir();
+             System.err.println("New path created! ");
+                new File(path).getParentFile().mkdir();
             }
         byte[] data = Base64.decodeBase64(b4);
-        try (OutputStream stream = new FileOutputStream(p)) {
+        try (OutputStream stream = new FileOutputStream(path)) {
             stream.write(data);
+            System.err.println("Written....");
         } catch (Exception e) {
+            System.err.println("ERROR SAVING: "+e);
         }
         return true;
     }
@@ -85,10 +93,13 @@ public class UtilHelper {
             base64Image = java.util.Base64.getEncoder().encodeToString(imageData);
         } catch (FileNotFoundException e) {
             //no worries just return default image
+         //   System.out.println("ERR: "+e);
+            
             return any;
 
         } catch (IOException ioe) {
             //same thing goes here
+          //  System.out.println("ERR IO: "+ioe);
             return any;
         }
         return base64Image;

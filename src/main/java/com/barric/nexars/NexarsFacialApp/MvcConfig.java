@@ -22,8 +22,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler("/files/**")
-               // .addResourceLocations("file:/opt/files/")
-                .addResourceLocations("file:///C:/opt/files/")
+                .addResourceLocations("file:/opt/files/")
+               // .addResourceLocations("file:///C:/opt/files/")
                 .setCachePeriod(3600)
                 .resourceChain(true);
     }
