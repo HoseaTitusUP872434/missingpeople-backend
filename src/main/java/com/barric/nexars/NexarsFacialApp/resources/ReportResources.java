@@ -119,13 +119,14 @@ public class ReportResources {
                 if (c.getMediaId() != null) {
                     img = c.getMediaId().getUrl();
                 }
-                img = UtilHelper.base64Encoder(UtilHelper.IMAGEPATH + img);
-                ro.setUserImage(img);
+               // img = UtilHelper.base64Encoder(UtilHelper.IMAGEPATH + img);
+                ro.setUserImage(UtilHelper.IMAGEURL + img);
                 //     ro.setUserImage(UtilHelper.IMAGEURL+c.getMediaId().getUrl());
                 if (mediaRepo.findByReportId(r.getId()) != null) {
                     Media me = mediaRepo.findByReportId(r.getId());
-                    ro.setPostImage(UtilHelper.base64Encoder(UtilHelper.IMAGEPATH + me.getUrl()));
-                    System.out.println(UtilHelper.IMAGEPATH + me.getUrl());
+//                    ro.setPostImage(UtilHelper.base64Encoder(UtilHelper.IMAGEPATH + me.getUrl()));
+            ro.setPostImage(UtilHelper.IMAGEURL + me.getUrl());
+                    System.out.println(UtilHelper.IMAGEURL + me.getUrl());
                     //  ro.setPostImage(UtilHelper.IMAGEURL+me.getUrl());
                 } else {
                     ro.setPostImage("");

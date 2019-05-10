@@ -25,12 +25,12 @@ public class UtilHelper {
     public static final String USER = "user";
     public static final String FILEPATH = "";
   
-//     public static final String IMAGEPATH = "C:/opt/files/";
-//      public static final String IMAGEURL = "localhost:8084/files/";
-//    public static final String APPURL = "localhost:8084/";
-    public static final String APPURL="http://40.86.95.117:8084";
-     public static final String IMAGEPATH = "/opt/files/";
-    public static final String IMAGEURL = "http://40.86.95.117:8084/files/";
+     public static final String IMAGEPATH = "C:/opt/files/";
+      public static final String IMAGEURL = "localhost:8084/files/";
+    public static final String APPURL = "localhost:8084/";
+//    public static final String APPURL="http://40.86.95.117:8084";
+//     public static final String IMAGEPATH = "/opt/files/";
+//    public static final String IMAGEURL = "http://40.86.95.117:8084/files/";
     public static final String IMAGETYPE_PROFILE = "profile";
     public static final String IMAGETYPE_PRODUCT = "product";
     public static final String subscriptionKey = "bf16848833c942488ae2d25814820601";

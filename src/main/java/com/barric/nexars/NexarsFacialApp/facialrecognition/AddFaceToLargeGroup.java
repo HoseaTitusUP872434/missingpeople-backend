@@ -57,7 +57,11 @@ public class AddFaceToLargeGroup
 
             if (entity != null) 
             {
-                System.out.println(EntityUtils.toString(entity));
+              //  System.out.println(EntityUtils.toString(entity));
+                //  System.out.println(EntityUtils.toString(entity));
+                   JSONObject jsonRes = new JSONObject(EntityUtils.toString(entity));
+               String pid =  jsonRes.getString("persistedFaceId");
+                System.err.println("Persisted ID: "+pid);
             }
         }
         catch (Exception e)
